@@ -1,0 +1,11 @@
+FROM apache/airflow:2.10.5-python3.12
+USER root
+RUN apt-get update && apt-get install -y --no-install-recommends openjdk-17-jre-headless && rm -rf /var/lib/apt/lists/*
+COPY --chown=airflow:root . /opt/flightledger
+USER airflow
+ENV PIP_USER=false
+WORKDIR /opt/flightledger
+RUN python -m venv /home/airflow/flightenv && /home/airflow/flightenv/bin/pip install --no-cache-dir -r requirements.lock && /home/airflow/flightenv/bin/pip install --no-deps .
+ENV FLIGHTLEDGER_PYTHON=/home/airflow/flightenv/bin/python FLIGHTLEDGER_ROOT=/opt/flightledger
+ENV AIRFLOW__CORE__DAGS_FOLDER=/opt/flightledger/dags AIRFLOW__CORE__LOAD_EXAMPLES=False
+CMD ["standalone"]

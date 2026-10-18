@@ -1,0 +1,96 @@
+{
+  "input_rows": 250594,
+  "accepted_rows": 250568,
+  "quarantined_rows": 26,
+  "duplicates_removed": 0,
+  "airport_dimension_rows": 86218,
+  "origin_unmatched_flights": 78,
+  "route_month_airline_rows": 7460,
+  "dbt_tests": 9,
+  "monthly": [
+    {
+      "source_month": "2025-01",
+      "flights": 89616,
+      "cancelled": 3240,
+      "operated": 86376,
+      "departure_observed": 84123,
+      "departure_on_time": 70044,
+      "cancellation_pct": 3.615,
+      "departure_otp15_pct": 83.264,
+      "departure_coverage_pct": 97.392
+    },
+    {
+      "source_month": "2025-02",
+      "flights": 78930,
+      "cancelled": 2753,
+      "operated": 76177,
+      "departure_observed": 74037,
+      "departure_on_time": 60059,
+      "cancellation_pct": 3.488,
+      "departure_otp15_pct": 81.12,
+      "departure_coverage_pct": 97.191
+    },
+    {
+      "source_month": "2025-03",
+      "flights": 82022,
+      "cancelled": 1972,
+      "operated": 80050,
+      "departure_observed": 78125,
+      "departure_on_time": 67106,
+      "cancellation_pct": 2.404,
+      "departure_otp15_pct": 85.896,
+      "departure_coverage_pct": 97.595
+    }
+  ],
+  "quality": [
+    {
+      "period": "2025-01",
+      "input_rows": 89616,
+      "accepted_rows": 89616,
+      "quarantined_rows": 0,
+      "duplicates_removed": 0,
+      "reasons": {},
+      "inserted": 0,
+      "removed": 0,
+      "updated": 0,
+      "source_sha256": "685f8befdb548cfa53d8dee0c6bf377c2791fd6ac1590748d6c0e486bc75f562",
+      "delta_version": 3
+    },
+    {
+      "period": "2025-02",
+      "input_rows": 78930,
+      "accepted_rows": 78930,
+      "quarantined_rows": 0,
+      "duplicates_removed": 0,
+      "reasons": {},
+      "inserted": 0,
+      "removed": 0,
+      "updated": 0,
+      "source_sha256": "92330370c9672f2b85989e689552f79eeb965d9e7de3ad7832140a911b062bbb",
+      "delta_version": 4
+    },
+    {
+      "period": "2025-03",
+      "input_rows": 82048,
+      "accepted_rows": 82022,
+      "quarantined_rows": 26,
+      "duplicates_removed": 0,
+      "reasons": {
+        "conflicting_business_key": 26
+      },
+      "inserted": 0,
+      "removed": 0,
+      "updated": 0,
+      "source_sha256": "fed54cf656b549575a44488c0252d705b9dfce570ca9e1ce671dc61799464662",
+      "delta_version": 5
+    }
+  ],
+  "source_hashes": {
+    "2025-01": "685f8befdb548cfa53d8dee0c6bf377c2791fd6ac1590748d6c0e486bc75f562",
+    "2025-02": "92330370c9672f2b85989e689552f79eeb965d9e7de3ad7832140a911b062bbb",
+    "2025-03": "fed54cf656b549575a44488c0252d705b9dfce570ca9e1ce671dc61799464662"
+  },
+  "airports_hash": "0499dbd88de2fc735ac5c09f59796ccc3af544e17ffda807f793c0c6fe6c3d75",
+  "source": "ANAC VRA and OurAirports",
+  "period": "2025 Q1"
+}

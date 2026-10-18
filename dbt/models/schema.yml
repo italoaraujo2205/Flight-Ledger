@@ -1,0 +1,29 @@
+version: 2
+sources:
+  - name: raw
+    schema: raw
+    tables:
+      - name: flights
+      - name: airports
+models:
+  - name: dim_airport
+    description: Cadastro atual de aeroportos, com prioridade determinística para códigos repetidos.
+    columns:
+      - name: airport_code
+        data_tests: [unique, not_null]
+  - name: fct_flight
+    description: Uma etapa de voo no snapshot mensal vigente, com horários em UTC.
+    columns:
+      - name: flight_id
+        data_tests: [unique, not_null]
+      - name: source_month
+        data_tests: [not_null]
+      - name: status
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: [REALIZADO, CANCELADO, NAO_INFORMADO]
+  - name: fct_daily_operations
+    description: Contagens aditivas por dia, empresa e trecho. Meses alterados são substituídos integralmente.
+  - name: mart_route_reliability
+    description: Cancelamentos e pontualidade com denominadores e cobertura separados.

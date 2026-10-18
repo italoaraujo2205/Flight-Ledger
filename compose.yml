@@ -1,0 +1,33 @@
+services:
+  pipeline:
+    build: .
+    user: "${AIRFLOW_UID:-50000}:0"
+    volumes:
+      - ./data:/app/data
+      - ./reports:/app/reports
+    command: ["sync", "--months", "2025-01", "2025-02", "2025-03"]
+  airflow:
+    profiles: [orchestration]
+    user: "${AIRFLOW_UID:-50000}:0"
+    build:
+      context: .
+      dockerfile: Dockerfile.airflow
+    ports:
+      - "127.0.0.1:8080:8080"
+    volumes:
+      - ./data:/opt/flightledger/data
+      - ./reports:/opt/flightledger/reports
+      - airflow_state:/opt/airflow
+    environment:
+      AIRFLOW__CORE__DAGS_FOLDER: /opt/flightledger/dags
+      AIRFLOW__CORE__LOAD_EXAMPLES: 'False'
+      FLIGHTLEDGER_ROOT: /opt/flightledger
+      FLIGHTLEDGER_PYTHON: /home/airflow/flightenv/bin/python
+    healthcheck:
+      test: ["CMD", "airflow", "db", "check"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 60s
+volumes:
+  airflow_state:

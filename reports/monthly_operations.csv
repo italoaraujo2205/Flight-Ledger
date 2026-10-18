@@ -1,0 +1,4 @@
+source_month,flights,cancelled,operated,departure_observed,departure_on_time,cancellation_pct,departure_otp15_pct,departure_coverage_pct
+2025-01,89616,3240,86376,84123,70044,3.615,83.264,97.392
+2025-02,78930,2753,76177,74037,60059,3.488,81.12,97.191
+2025-03,82022,1972,80050,78125,67106,2.404,85.896,97.595

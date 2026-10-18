@@ -1,0 +1,10 @@
+flightledger:
+  target: local
+  outputs:
+    local:
+      type: duckdb
+      path: "{{ env_var('FLIGHTLEDGER_WAREHOUSE') }}"
+      schema: analytics
+      threads: 2
+      settings:
+        TimeZone: UTC

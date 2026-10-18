@@ -1,0 +1,16 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "flightledger"
+version = "0.1.0"
+description = "Revision-aware lakehouse for Brazilian flight operations"
+requires-python = ">=3.11,<3.13"
+dependencies = ["pyspark==3.5.5", "deltalake==1.2.1", "pyarrow==20.0.0", "duckdb==1.4.3", "dbt-core==1.10.15", "dbt-duckdb==1.9.6", "filelock==3.20.0", "boto3==1.40.56"]
+
+[project.scripts]
+flightledger = "flightledger.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
